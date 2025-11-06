@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://o86ocdi7diip"]
+[gd_scene load_steps=3 format=3 uid="uid://o86ocdi7diip"]
 
+[ext_resource type="Script" uid="uid://cslg0737drlfa" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="1_o5qli"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_0wfyh")
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1080.0
 offset_bottom = 1920.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,11 +24,52 @@ size_flags_vertical = 3
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="TicTacToe" type="Control" parent="Control/MarginContainer"]
+[node name="LevelSelector" type="GridContainer" parent="UI/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="SafeLevelButton" type="Button" parent="UI/MarginContainer/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+disabled = true
+text = "Safe"
+
+[node name="TicTacToeLevelButton" type="Button" parent="UI/MarginContainer/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Riddle #1
+"
+
+[node name="Button3" type="Button" parent="UI/MarginContainer/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+disabled = true
+text = "Riddle #2
+"
+
+[node name="Button4" type="Button" parent="UI/MarginContainer/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+disabled = true
+text = "Riddle #3
+"
+
+[node name="TicTacToe" type="Control" parent="UI/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("1_o5qli")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/TicTacToe"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/TicTacToe"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,15 +77,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/MarginContainer/TicTacToe/VBoxContainer"]
+[node name="Top" type="Control" parent="UI/MarginContainer/TicTacToe/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control2" type="Control" parent="Control/MarginContainer/TicTacToe/VBoxContainer"]
+[node name="Middle" type="Control" parent="UI/MarginContainer/TicTacToe/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2"]
+[node name="GridContainer" type="GridContainer" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 13
@@ -56,92 +99,100 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Button0" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button0" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "O"
 
-[node name="Button1" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button1" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button2" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 100
-text = "X"
-
-[node name="Button3" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button2" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "X"
 
-[node name="Button4" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button3" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button4" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "O"
 
-[node name="Button5" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button5" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "X"
 
-[node name="Button6" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button6" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button7" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button7" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button8" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+[node name="Button8" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Middle/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 
-[node name="Control3" type="Control" parent="Control/MarginContainer/TicTacToe/VBoxContainer"]
+[node name="Bottom" type="Control" parent="UI/MarginContainer/TicTacToe/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -249.5
-offset_top = -20.0
-offset_right = 249.5
-offset_bottom = 144.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 622.0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 230
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 230
+theme_override_constants/margin_bottom = 50
 
-[node name="Message" type="Label" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control3/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer"]
+layout_mode = 2
+
+[node name="Message" type="Label" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = -55.0
-offset_right = 188.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "Solve the puzzle!"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="TicTacToeBackButton" type="Button" parent="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[connection signal="pressed" from="UI/MarginContainer/LevelSelector/TicTacToeLevelButton" to="." method="_on_tic_tac_toe_level_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/TicTacToeBackButton" to="." method="_on_tic_tac_toe_back_button_pressed"]
