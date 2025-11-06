@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://o86ocdi7diip"]
+[gd_scene load_steps=4 format=3 uid="uid://o86ocdi7diip"]
 
 [ext_resource type="Script" uid="uid://cslg0737drlfa" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://3n8kkopvcbss" path="res://scripts/safe.gd" id="3_sugp2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0wfyh")
@@ -26,7 +27,6 @@ theme_override_constants/margin_bottom = 24
 
 [node name="LevelSelector" type="GridContainer" parent="UI/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 columns = 2
 
@@ -35,7 +35,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-disabled = true
 text = "Safe"
 
 [node name="TicTacToeLevelButton" type="Button" parent="UI/MarginContainer/LevelSelector"]
@@ -64,8 +63,240 @@ disabled = true
 text = "Riddle #3
 "
 
+[node name="Safe" type="Control" parent="UI/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("3_sugp2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/Safe"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="Control" parent="UI/MarginContainer/Safe/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Middle" type="Control" parent="UI/MarginContainer/Safe/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SafeButtonsContainer" type="VBoxContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Middle"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 621.0
+size_flags_horizontal = 3
+
+[node name="DigitContainer0" type="HBoxContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MinusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "-"
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -55.0
+offset_right = 23.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="PlusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "+"
+
+[node name="DigitContainer1" type="HBoxContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MinusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "-"
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -55.0
+offset_right = 23.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="PlusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "+"
+
+[node name="DigitContainer2" type="HBoxContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MinusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "-"
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -55.0
+offset_right = 23.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="PlusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "+"
+
+[node name="DigitContainer3" type="HBoxContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MinusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "-"
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -55.0
+offset_right = 23.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="PlusButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "+"
+
+[node name="Bottom" type="Control" parent="UI/MarginContainer/Safe/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 622.0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 230
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 230
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="SafeInputButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+disabled = true
+text = "Input"
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="SafeBackButton" type="Button" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
 [node name="TicTacToe" type="Control" parent="UI/MarginContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 script = ExtResource("1_o5qli")
 
@@ -194,5 +425,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
 text = "Back"
 
+[connection signal="pressed" from="UI/MarginContainer/LevelSelector/SafeLevelButton" to="." method="_on_safe_level_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/TicTacToeLevelButton" to="." method="_on_tic_tac_toe_level_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/TicTacToeBackButton" to="." method="_on_tic_tac_toe_back_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer2/SafeBackButton" to="." method="_on_level_back_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/TicTacToeBackButton" to="." method="_on_level_back_button_pressed"]
