@@ -1,0 +1,147 @@
+[gd_scene load_steps=2 format=3 uid="uid://o86ocdi7diip"]
+
+[ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="1_o5qli"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="TicTacToe" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_o5qli")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/TicTacToe"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/MarginContainer/TicTacToe/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="Control/MarginContainer/TicTacToe/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_right = 310.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button0" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "O"
+
+[node name="Button1" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button3" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button4" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "O"
+
+[node name="Button5" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button6" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button7" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button8" type="Button" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+
+[node name="Control3" type="Control" parent="Control/MarginContainer/TicTacToe/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = -20.0
+offset_right = 249.5
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Message" type="Label" parent="Control/MarginContainer/TicTacToe/VBoxContainer/Control3/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -55.0
+offset_right = 188.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
