@@ -84,7 +84,6 @@ text = "Riddle #3
 
 [node name="Safe" type="Control" parent="UI/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 script = ExtResource("3_sugp2")
 
@@ -99,6 +98,23 @@ grow_vertical = 2
 [node name="Top" type="Control" parent="UI/MarginContainer/Safe/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="SafeMessage" type="Label" parent="UI/MarginContainer/Safe/VBoxContainer/Top"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -55.0
+offset_right = 206.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Input code"
 
 [node name="Middle" type="Control" parent="UI/MarginContainer/Safe/VBoxContainer"]
 layout_mode = 2
@@ -296,7 +312,6 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
-disabled = true
 text = "Input"
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
@@ -818,6 +833,7 @@ text = "Back"
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/TicTacToeLevelButton" to="." method="_on_tic_tac_toe_level_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/MazeLevelButton" to="." method="_on_maze_level_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/Button4" to="." method="_on_tetrominoes_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/SafeInputButton" to="UI/MarginContainer/Safe" method="_on_safe_input_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer2/SafeBackButton" to="." method="_on_level_back_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/TicTacToeBackButton" to="." method="_on_level_back_button_pressed"]
 [connection signal="body_entered" from="UI/MarginContainer/Maze/Exit" to="UI/MarginContainer/Maze" method="_on_exit_body_entered"]

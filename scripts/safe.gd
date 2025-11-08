@@ -4,8 +4,12 @@ const BUTTONS_AMOUNT = 4
 const INITIAL_DIGITS = [0, 0, 0, 0]
 const MIN_DIGIT = 0
 const MAX_DIGIT = 9
+const DIGITS_SOLUTION = [4, 5, 6, 0]
 
 @onready var safe_buttons_container := %SafeButtonsContainer
+@onready var message := %SafeMessage
+
+var current_digits = INITIAL_DIGITS.duplicate()
 
 func _ready() -> void:
 	for i in range(BUTTONS_AMOUNT):
@@ -31,7 +35,15 @@ func _on_digit_changed(digit_index: int, delta: int) -> void:
 	elif new_value < MIN_DIGIT:
 		new_value = MAX_DIGIT
 
+	current_digits[digit_index] = new_value
 	label.text = str(new_value)
 
 func _process(_delta: float) -> void:
 	pass
+
+
+func _on_safe_input_button_pressed() -> void:
+	if current_digits == DIGITS_SOLUTION:
+		message.text = "Well done!"
+	else:
+		message.text = "Try again"
