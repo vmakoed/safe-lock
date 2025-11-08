@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var level_selector := %LevelSelector
 @onready var tic_tac_toe := %TicTacToe
+@onready var tetrominoes := %Tetrominoes
 @onready var safe := %Safe
 @onready var maze := %Maze
 
@@ -24,3 +25,6 @@ func _switch_level(level) -> void:
 	current_level = level
 	level_selector.visible = false
 	level.visible = true
+
+func _on_tetrominoes_button_pressed() -> void:
+	_switch_level(tetrominoes)
