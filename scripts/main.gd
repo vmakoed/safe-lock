@@ -1,12 +1,12 @@
 extends Node2D
 
 @onready var intro_screen := %IntroScreen
+@onready var win_screen := %WinScreen
 @onready var level_selector := %LevelSelector
 @onready var tic_tac_toe := %TicTacToe
 @onready var tetrominoes := %Tetrominoes
 @onready var safe := %Safe
 @onready var maze := %Maze
-@onready var win_button := %WinButton
 
 @export var win_link: String = ""
 
@@ -14,7 +14,7 @@ var current_level: Control = null
 
 func _ready() -> void:
 	if win_link.is_empty():
-		win_button.visible = false
+		win_screen.button_visible = false
 
 func _on_level_back_button_pressed() -> void:
 	current_level.visible = false
