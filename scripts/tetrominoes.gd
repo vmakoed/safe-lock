@@ -48,6 +48,7 @@ func _on_down_button_pressed() -> void:
 func _on_confirm_button_pressed() -> void:
 	active_piece = null
 	_enable_piece_buttons()
+	_fade_in_board()
 
 func _on_delete_button_pressed() -> void:
 	if active_piece == null: return
@@ -60,6 +61,7 @@ func set_active_piece(piece_index: int) -> void:
 	active_piece = piece
 	active_piece.visible = true
 	_disable_piece_buttons()
+	_fade_out_board()
 
 func _disable_piece_buttons() -> void:
 	for i in range(tetrominoes_buttons.get_child_count()):
@@ -70,3 +72,14 @@ func _enable_piece_buttons() -> void:
 	for i in range(tetrominoes_buttons.get_child_count()):
 		var button = tetrominoes_buttons.get_child(i)
 		button.disabled = false
+
+func _fade_out_board() -> void:
+	for i in range(tetrominoes_board.get_child_count()):
+		var piece = tetrominoes_board.get_child(i)
+		if piece != active_piece:
+			piece.modulate = Color(0, 0, 0, 0.5)
+
+func _fade_in_board() -> void:
+	for i in range(tetrominoes_board.get_child_count()):
+		var piece = tetrominoes_board.get_child(i)
+		piece.modulate = Color(1, 1, 1, 1)

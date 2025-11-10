@@ -4,10 +4,11 @@ const BUTTONS_AMOUNT = 4
 const INITIAL_DIGITS = [0, 0, 0, 0]
 const MIN_DIGIT = 0
 const MAX_DIGIT = 9
-const DIGITS_SOLUTION = [4, 5, 6, 0]
+const DIGITS_SOLUTION = [4, 6, 5, 0]
 
 @onready var safe_buttons_container := %SafeButtonsContainer
 @onready var message := %SafeMessage
+@onready var win_screen := %WinScreen
 
 var current_digits = INITIAL_DIGITS.duplicate()
 
@@ -44,6 +45,7 @@ func _process(_delta: float) -> void:
 
 func _on_safe_input_button_pressed() -> void:
 	if current_digits == DIGITS_SOLUTION:
-		message.text = "Well done!"
+		visible = false
+		win_screen.visible = true
 	else:
 		message.text = "Try again"

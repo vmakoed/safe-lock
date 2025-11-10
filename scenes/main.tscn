@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://o86ocdi7diip"]
+[gd_scene load_steps=19 format=4 uid="uid://o86ocdi7diip"]
 
 [ext_resource type="Script" uid="uid://cslg0737drlfa" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="1_o5qli"]
+[ext_resource type="FontFile" uid="uid://bfoh3k736r1a0" path="res://resources/SourceCodePro-Medium.ttf" id="2_choun"]
 [ext_resource type="Script" uid="uid://3n8kkopvcbss" path="res://scripts/safe.gd" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://ca5ouk62ie06e" path="res://scripts/maze.gd" id="4_tefeu"]
 [ext_resource type="TileSet" uid="uid://bhpln50cg3i14" path="res://resources/brick.tres" id="5_85g3d"]
@@ -9,6 +10,10 @@
 [ext_resource type="Script" uid="uid://dy0balcon7rqv" path="res://scripts/tetrominoes.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://bu5kl0d5g68mi" path="res://scripts/tetrominoes_board.gd" id="8_85g3d"]
 [ext_resource type="Script" uid="uid://381ypflv7hvt" path="res://scripts/piece.gd" id="10_trceg"]
+[ext_resource type="Texture2D" uid="uid://odpxl4wgm5x8" path="res://assets/wall.png" id="11_ya4ey"]
+
+[sub_resource type="Theme" id="Theme_ya4ey"]
+default_font = ExtResource("2_choun")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tefeu"]
 texture = ExtResource("6_o6xl0")
@@ -25,6 +30,15 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(21.500002, 21.333328)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
+texture = ExtResource("11_ya4ey")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_trceg"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_eb6dy")
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0wfyh")
 
@@ -33,6 +47,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1080.0
 offset_bottom = 1920.0
+theme = SubResource("Theme_ya4ey")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 layout_mode = 1
@@ -46,8 +61,96 @@ size_flags_vertical = 3
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_bottom = 24
 
+[node name="IntroScreen" type="Control" parent="UI/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/IntroScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="UI/MarginContainer/IntroScreen/MarginContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Operative, your name surfaced in our final screening.
+
+Before we can deploy you into the field, command requires confirmation of your tactical reasoning and pattern recognition skills.
+
+Unlock the secure vault and access your true objective.
+
+Remember — observation and patience are your greatest assets."
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/IntroScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 1500
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="StartButton" type="Button" parent="UI/MarginContainer/IntroScreen/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Start"
+
+[node name="WinScreen" type="Control" parent="UI/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="UI/MarginContainer/WinScreen/MarginContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Operative, your performance exceeded expectations.
+
+Effective immediately, you are cleared for the assignment.
+
+On your mission, you will join other experienced agents.
+
+Further details are classified and will be transmitted through encrypted channels.
+"
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/WinScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 1500
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="WinButton" type="Button" parent="UI/MarginContainer/WinScreen/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Next"
+
 [node name="LevelSelector" type="GridContainer" parent="UI/MarginContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 columns = 2
 
@@ -63,7 +166,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "Riddle #1
+text = "Lead #1
 "
 
 [node name="MazeLevelButton" type="Button" parent="UI/MarginContainer/LevelSelector"]
@@ -71,7 +174,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "Riddle #2
+text = "Lead #2
 "
 
 [node name="Button4" type="Button" parent="UI/MarginContainer/LevelSelector"]
@@ -79,11 +182,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "Riddle #3
+text = "Lead #3
 "
 
 [node name="Safe" type="Control" parent="UI/MarginContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 script = ExtResource("3_sugp2")
 
@@ -543,7 +647,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "↑"
+text = "▲"
 
 [node name="Button3" type="Control" parent="UI/MarginContainer/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
 layout_mode = 2
@@ -555,7 +659,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "←"
+text = "◀"
 
 [node name="Button5" type="Control" parent="UI/MarginContainer/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
 layout_mode = 2
@@ -567,7 +671,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "→"
+text = "►"
 
 [node name="Button7" type="Control" parent="UI/MarginContainer/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
 layout_mode = 2
@@ -579,7 +683,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "↓"
+text = "▼"
 
 [node name="Button9" type="Control" parent="UI/MarginContainer/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
 layout_mode = 2
@@ -633,6 +737,7 @@ grow_vertical = 2
 script = ExtResource("8_85g3d")
 
 [node name="Piece1" type="Control" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Top/TetrominoesBoard"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -731,8 +836,8 @@ size_flags_vertical = 3
 [node name="TileMapLayer" type="TileMapLayer" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer"]
 position = Vector2(264, 287)
 scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAD8//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD9//z/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQAAAAAAAAADAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAD8/wQAAQAAAAAAAAD8/wUAAQAAAAAAAAD7/wUAAQAAAAAAAAD9/wUAAQAAAAAAAAACAAEAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAD8////AQAAAAAAAAD7////AQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAA=")
-tile_set = ExtResource("5_85g3d")
+tile_map_data = PackedByteArray("AAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAD8/wQAAAAAAAAAAAD8/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAACAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_trceg")
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer"]
 layout_mode = 2
@@ -759,7 +864,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "↑"
+text = "▲"
 
 [node name="Button3" type="Control" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
 layout_mode = 2
@@ -771,7 +876,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "←"
+text = "◀"
 
 [node name="Button7" type="Control" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
 layout_mode = 2
@@ -783,28 +888,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "→"
+text = "►"
 
 [node name="ConfirmButton" type="Button" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "✓"
+text = "+"
 
 [node name="DownButton" type="Button" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "↓"
+text = "▼"
 
 [node name="DeleteButton" type="Button" parent="UI/MarginContainer/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "✗"
+text = "×"
 
 [node name="Bottom" type="Control" parent="UI/MarginContainer/Tetrominoes/VBoxContainer"]
 layout_mode = 2
@@ -829,6 +934,8 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
 text = "Back"
 
+[connection signal="pressed" from="UI/MarginContainer/IntroScreen/MarginContainer/MarginContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/WinScreen/MarginContainer/MarginContainer/WinButton" to="." method="_on_win_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/SafeLevelButton" to="." method="_on_safe_level_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/TicTacToeLevelButton" to="." method="_on_tic_tac_toe_level_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/LevelSelector/MazeLevelButton" to="." method="_on_maze_level_button_pressed"]
