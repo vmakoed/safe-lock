@@ -43,3 +43,7 @@ func _on_start_button_pressed() -> void:
 
 func _on_win_button_pressed() -> void:
 	OS.shell_open(win_link)
+
+func _on_safe_unlocked() -> void:
+	safe.visible = false
+	win_screen.visible = true

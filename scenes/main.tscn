@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="1_o5qli"]
 [ext_resource type="Theme" uid="uid://c2hm7c7xw5d2v" path="res://resources/theme.tres" id="2_trceg"]
 [ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="3_85g3d"]
-[ext_resource type="Script" uid="uid://3n8kkopvcbss" path="res://scripts/safe.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://6w6i4itypyq1" path="res://scenes/safe.tscn" id="4_a8y0u"]
 [ext_resource type="Script" uid="uid://ca5ouk62ie06e" path="res://scripts/maze.gd" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bdsf6t36ljorm" path="res://scenes/message_screen.tscn" id="4_trceg"]
 [ext_resource type="TileSet" uid="uid://bhpln50cg3i14" path="res://resources/brick.tres" id="5_85g3d"]
@@ -56,252 +56,10 @@ theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 48
 
-[node name="Safe" type="Control" parent="UI/ScreenFrame"]
+[node name="Safe" parent="UI/ScreenFrame" instance=ExtResource("4_a8y0u")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-script = ExtResource("3_sugp2")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/ScreenFrame/Safe"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Top" type="Control" parent="UI/ScreenFrame/Safe/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="SafeMessage" type="Label" parent="UI/ScreenFrame/Safe/VBoxContainer/Top"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -206.0
-offset_top = -55.0
-offset_right = 206.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "Input code"
-
-[node name="Middle" type="Control" parent="UI/ScreenFrame/Safe/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="SafeButtonsContainer" type="VBoxContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 1080.0
-offset_bottom = 621.0
-size_flags_horizontal = 3
-
-[node name="DigitContainer0" type="HBoxContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MinusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "-"
-
-[node name="Panel" type="Panel" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -55.0
-offset_right = 23.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "0"
-
-[node name="PlusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer0"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "+"
-
-[node name="DigitContainer1" type="HBoxContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MinusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "-"
-
-[node name="Panel" type="Panel" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -55.0
-offset_right = 23.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "0"
-
-[node name="PlusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "+"
-
-[node name="DigitContainer2" type="HBoxContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MinusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "-"
-
-[node name="Panel" type="Panel" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -55.0
-offset_right = 23.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "0"
-
-[node name="PlusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "+"
-
-[node name="DigitContainer3" type="HBoxContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MinusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "-"
-
-[node name="Panel" type="Panel" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -55.0
-offset_right = 23.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "0"
-
-[node name="PlusButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Middle/SafeButtonsContainer/DigitContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "+"
-
-[node name="Bottom" type="Control" parent="UI/ScreenFrame/Safe/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Bottom"]
-layout_mode = 0
-offset_right = 1080.0
-offset_bottom = 622.0
-size_flags_vertical = 3
-theme_override_constants/margin_left = 230
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 230
-theme_override_constants/margin_bottom = 50
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 50
-
-[node name="SafeInputButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 60
-text = "Input"
-
-[node name="MarginContainer2" type="MarginContainer" parent="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 50
-
-[node name="SafeBackButton" type="Button" parent="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 60
-text = "Back"
 
 [node name="TicTacToe" type="Control" parent="UI/ScreenFrame"]
 unique_name_in_owner = true
@@ -839,8 +597,8 @@ On your mission, you will join other experienced agents.
 Further details are classified and will be transmitted through encrypted channels."
 button_text = "Next"
 
-[connection signal="pressed" from="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/SafeInputButton" to="UI/ScreenFrame/Safe" method="_on_safe_input_button_pressed"]
-[connection signal="pressed" from="UI/ScreenFrame/Safe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer2/SafeBackButton" to="." method="_on_level_back_button_pressed"]
+[connection signal="back_button_pressed" from="UI/ScreenFrame/Safe" to="." method="_on_level_back_button_pressed"]
+[connection signal="unlocked" from="UI/ScreenFrame/Safe" to="." method="_on_safe_unlocked"]
 [connection signal="pressed" from="UI/ScreenFrame/TicTacToe/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/TicTacToeBackButton" to="." method="_on_level_back_button_pressed"]
 [connection signal="body_entered" from="UI/ScreenFrame/Maze/Exit" to="UI/ScreenFrame/Maze" method="_on_exit_body_entered"]
 [connection signal="pressed" from="UI/ScreenFrame/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls/UpButton" to="UI/ScreenFrame/Maze" method="_on_up_button_pressed"]
