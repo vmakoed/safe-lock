@@ -1,21 +1,22 @@
-extends Control
+class_name MessageScreen
+extends BaseLevel
 
-signal button_pressed
+signal confirm_pressed
 
 @export_multiline var message_text: String = "Message text"
-@export var button_text: String = "Button text"
-
-var button_visible : bool = true: set = _set_button_visible
 
 @onready var label = %Label
-@onready var button = %Button
 
 func _ready() -> void:
 	label.text = message_text
-	button.text = button_text
+	controls_hint = "A: CONFIRM"
+	button_mapping = {
+		"a": "confirm"
+	}
 
-func _set_button_visible(value: bool) -> void:
-	button.visible = value
+func handle_input(action: String) -> void:
+	match action:
+		"confirm": _on_confirm_pressed()
 
-func _on_button_pressed() -> void:
-	button_pressed.emit()
+func _on_confirm_pressed ()-> void:
+	confirm_pressed.emit()
