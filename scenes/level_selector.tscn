@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb35b7hao3h5i"]
+
+[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="1_aeu7d"]
+[ext_resource type="Script" uid="uid://btk6lvskrhwsd" path="res://scripts/level_selector.gd" id="1_gkmvm"]
+
+[node name="LevelSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gkmvm")
+
+[node name="ScreenFrame" parent="." instance=ExtResource("1_aeu7d")]
+layout_mode = 0
+
+[node name="LevelSelector" type="GridContainer" parent="ScreenFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+
+[node name="SafeLevelButton" type="Button" parent="ScreenFrame/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Safe"
+
+[node name="TicTacToeLevelButton" type="Button" parent="ScreenFrame/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Lead #1
+"
+
+[node name="MazeLevelButton" type="Button" parent="ScreenFrame/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Lead #2
+"
+
+[node name="TetrominoesButton" type="Button" parent="ScreenFrame/LevelSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Lead #3
+"
+
+[connection signal="pressed" from="ScreenFrame/LevelSelector/SafeLevelButton" to="." method="_on_safe_level_button_pressed"]
+[connection signal="pressed" from="ScreenFrame/LevelSelector/TicTacToeLevelButton" to="." method="_on_tic_tac_toe_level_button_pressed"]
+[connection signal="pressed" from="ScreenFrame/LevelSelector/MazeLevelButton" to="." method="_on_maze_level_button_pressed"]
+[connection signal="pressed" from="ScreenFrame/LevelSelector/TetrominoesButton" to="." method="_on_tetrominoes_button_pressed"]

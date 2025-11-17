@@ -29,13 +29,13 @@ func _on_safe_level_button_pressed() -> void:
 func _on_maze_level_button_pressed() -> void:
 	_switch_level(maze)
 
+func _on_tetrominoes_level_button_pressed() -> void:
+	_switch_level(tetrominoes)
+
 func _switch_level(level) -> void:
 	current_level = level
 	level_selector.visible = false
 	level.visible = true
-
-func _on_tetrominoes_button_pressed() -> void:
-	_switch_level(tetrominoes)
 
 func _on_start_button_pressed() -> void:
 	intro_screen.visible = false
