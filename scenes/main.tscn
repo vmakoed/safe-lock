@@ -50,31 +50,10 @@ theme = ExtResource("2_trceg")
 
 [node name="ScreenFrame" parent="UI" instance=ExtResource("3_85g3d")]
 layout_mode = 0
-
-[node name="IntroScreen" parent="UI/ScreenFrame" instance=ExtResource("4_trceg")]
-unique_name_in_owner = true
-layout_mode = 2
-message_text = "Operative, your name surfaced in our final screening.
-
-Before we can deploy you into the field, command requires confirmation of your tactical reasoning and pattern recognition skills.
-
-Unlock the secure vault and access your true objective.
-
-Remember — observation and patience are your greatest assets."
-button_text = "Start"
-
-[node name="WinScreen" parent="UI/ScreenFrame" instance=ExtResource("4_trceg")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-message_text = "Operative, your performance exceeded expectations.
-
-Effective immediately, you are cleared for the assignment.
-
-On your mission, you will join other experienced agents.
-
-Further details are classified and will be transmitted through encrypted channels."
-button_text = "Next"
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
 [node name="LevelSelector" type="GridContainer" parent="UI/ScreenFrame"]
 unique_name_in_owner = true
@@ -862,8 +841,35 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
 text = "Back"
 
-[connection signal="button_pressed" from="UI/ScreenFrame/IntroScreen" to="." method="_on_start_button_pressed"]
-[connection signal="button_pressed" from="UI/ScreenFrame/WinScreen" to="." method="_on_win_button_pressed"]
+[node name="IntroScreen" parent="UI" instance=ExtResource("4_trceg")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 1032.0
+offset_bottom = 1872.0
+message_text = "Operative, your name surfaced in our final screening.
+
+Before we can deploy you into the field, command requires confirmation of your tactical reasoning and pattern recognition skills.
+
+Unlock the secure vault and access your true objective.
+
+Remember — observation and patience are your greatest assets."
+button_text = "Start"
+
+[node name="WinScreen" parent="UI" instance=ExtResource("4_trceg")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+message_text = "Operative, your performance exceeded expectations.
+
+Effective immediately, you are cleared for the assignment.
+
+On your mission, you will join other experienced agents.
+
+Further details are classified and will be transmitted through encrypted channels."
+button_text = "Next"
+
 [connection signal="pressed" from="UI/ScreenFrame/LevelSelector/SafeLevelButton" to="." method="_on_safe_level_button_pressed"]
 [connection signal="pressed" from="UI/ScreenFrame/LevelSelector/TicTacToeLevelButton" to="." method="_on_tic_tac_toe_level_button_pressed"]
 [connection signal="pressed" from="UI/ScreenFrame/LevelSelector/MazeLevelButton" to="." method="_on_maze_level_button_pressed"]
@@ -878,3 +884,5 @@ text = "Back"
 [connection signal="pressed" from="UI/ScreenFrame/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls/DownButton" to="UI/ScreenFrame/Maze" method="_on_down_button_pressed"]
 [connection signal="pressed" from="UI/ScreenFrame/Maze/VBoxContainer/Bottom/VBoxContainer/MarginContainer2/MazeBackButton" to="." method="_on_level_back_button_pressed"]
 [connection signal="pressed" from="UI/ScreenFrame/Tetrominoes/VBoxContainer/Bottom/MarginContainer2/BackButton" to="." method="_on_level_back_button_pressed"]
+[connection signal="button_pressed" from="UI/IntroScreen" to="." method="_on_start_button_pressed"]
+[connection signal="button_pressed" from="UI/WinScreen" to="." method="_on_win_button_pressed"]
