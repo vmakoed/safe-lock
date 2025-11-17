@@ -46,6 +46,5 @@ func _on_input_button_pressed() -> void:
 	else:
 		message.text = "Try again"
 
-
 func _on_back_button_pressed() -> void:
 	back_button_pressed.emit()

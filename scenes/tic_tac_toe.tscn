@@ -1,0 +1,148 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttjvxr6exn3h"]
+
+[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="1_etyx0"]
+[ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="2_8h2lu"]
+
+[node name="TicTacToe" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8h2lu")
+
+[node name="ScreenFrame" parent="." instance=ExtResource("1_etyx0")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenFrame"]
+layout_mode = 2
+
+[node name="Top" type="Control" parent="ScreenFrame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Middle" type="Control" parent="ScreenFrame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScreenFrame/VBoxContainer/Middle"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_right = 310.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button0" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "O"
+
+[node name="Button1" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button2" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button3" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button4" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "O"
+
+[node name="Button5" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Button6" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button7" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button8" type="Button" parent="ScreenFrame/VBoxContainer/Middle/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+
+[node name="Bottom" type="Control" parent="ScreenFrame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 230
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 230
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenFrame/VBoxContainer/Bottom/MarginContainer"]
+layout_mode = 2
+
+[node name="Message" type="Label" parent="ScreenFrame/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "Solve the puzzle!"
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Bottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="BackButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/MarginContainer/VBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
