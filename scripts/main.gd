@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var intro_screen := %IntroScreen
 @onready var win_screen := %WinScreen
