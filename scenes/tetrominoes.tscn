@@ -1,0 +1,256 @@
+[gd_scene load_steps=8 format=4 uid="uid://b0l1a6a3q2nsb"]
+
+[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="1_0s1db"]
+[ext_resource type="Script" uid="uid://dy0balcon7rqv" path="res://scripts/tetrominoes.gd" id="1_lq7ht"]
+[ext_resource type="Script" uid="uid://bu5kl0d5g68mi" path="res://scripts/tetrominoes_board.gd" id="2_lq7ht"]
+[ext_resource type="Script" uid="uid://381ypflv7hvt" path="res://scripts/piece.gd" id="3_cwjcp"]
+[ext_resource type="Texture2D" uid="uid://odpxl4wgm5x8" path="res://assets/wall.png" id="4_uoy2p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uetis"]
+texture = ExtResource("4_uoy2p")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q3bpf"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_uetis")
+
+[node name="Tetrominoes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lq7ht")
+
+[node name="ScreenFrame" parent="." instance=ExtResource("1_0s1db")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenFrame"]
+layout_mode = 2
+
+[node name="Top" type="Control" parent="ScreenFrame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Board" type="Control" parent="ScreenFrame/VBoxContainer/Top"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 220.0
+offset_top = 100.0
+offset_right = -220.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_lq7ht")
+
+[node name="Piece1" type="Control" parent="ScreenFrame/VBoxContainer/Top/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+accent_color = Color(0.21176471, 0.4117647, 0.9843137, 1)
+shape_base = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)])
+shape_accent = Array[Vector2i]([Vector2i(1, 1)])
+
+[node name="Piece2" type="Control" parent="ScreenFrame/VBoxContainer/Top/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(1, 1)])
+shape_accent = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 1)])
+
+[node name="Piece3" type="Control" parent="ScreenFrame/VBoxContainer/Top/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)])
+shape_accent = Array[Vector2i]([Vector2i(0, 0)])
+
+[node name="Piece4" type="Control" parent="ScreenFrame/VBoxContainer/Top/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(1, 0), Vector2i(0, 1), Vector2i(2, 0)])
+shape_accent = Array[Vector2i]([Vector2i(1, 0), Vector2i(1, 1)])
+
+[node name="Piece5" type="Control" parent="ScreenFrame/VBoxContainer/Top/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(2, 1)])
+shape_accent = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
+
+[node name="Middle" type="Control" parent="ScreenFrame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenFrame/VBoxContainer/Middle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="Buttons" type="GridContainer" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Piece1" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Piece2" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Piece3" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Piece4" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Piece5" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TileMapLayer" type="TileMapLayer" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer"]
+position = Vector2(264, 287)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAD8/wQAAAAAAAAAAAD8/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAACAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_q3bpf")
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="Controls" type="GridContainer" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Control" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpButton" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "▲"
+
+[node name="Button3" type="Control" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftButton" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "◀"
+
+[node name="Button7" type="Control" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RightButton" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "►"
+
+[node name="ConfirmButton" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "+"
+
+[node name="DownButton" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "▼"
+
+[node name="DeleteButton" type="Button" parent="ScreenFrame/VBoxContainer/Middle/HBoxContainer/MarginContainer2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "×"
+
+[node name="Bottom" type="Control" parent="ScreenFrame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 330
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 330
+theme_override_constants/margin_bottom = 200
+
+[node name="BackButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]

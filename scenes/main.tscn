@@ -1,26 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://o86ocdi7diip"]
+[gd_scene load_steps=9 format=3 uid="uid://o86ocdi7diip"]
 
 [ext_resource type="Script" uid="uid://cslg0737drlfa" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Theme" uid="uid://c2hm7c7xw5d2v" path="res://resources/theme.tres" id="2_trceg"]
-[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="3_85g3d"]
 [ext_resource type="PackedScene" uid="uid://6w6i4itypyq1" path="res://scenes/safe.tscn" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bdsf6t36ljorm" path="res://scenes/message_screen.tscn" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://dttjvxr6exn3h" path="res://scenes/tic_tac_toe.tscn" id="5_a8y0u"]
-[ext_resource type="Script" uid="uid://dy0balcon7rqv" path="res://scripts/tetrominoes.gd" id="7_o6xl0"]
-[ext_resource type="Script" uid="uid://bu5kl0d5g68mi" path="res://scripts/tetrominoes_board.gd" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://b0l1a6a3q2nsb" path="res://scenes/tetrominoes.tscn" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://dwxqygbppirvj" path="res://scenes/maze.tscn" id="10_eb6dy"]
-[ext_resource type="Script" uid="uid://381ypflv7hvt" path="res://scripts/piece.gd" id="10_trceg"]
-[ext_resource type="Texture2D" uid="uid://odpxl4wgm5x8" path="res://assets/wall.png" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bb35b7hao3h5i" path="res://scenes/level_selector.tscn" id="13_a8y0u"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
-texture = ExtResource("11_ya4ey")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_trceg"]
-tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_eb6dy")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0wfyh")
@@ -31,243 +18,6 @@ anchors_preset = 0
 offset_right = 1080.0
 offset_bottom = 1920.0
 theme = ExtResource("2_trceg")
-
-[node name="ScreenFrame" parent="UI" instance=ExtResource("3_85g3d")]
-layout_mode = 0
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 48
-
-[node name="Tetrominoes" type="Control" parent="UI/ScreenFrame"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-script = ExtResource("7_o6xl0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/ScreenFrame/Tetrominoes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Top" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TetrominoesBoard" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Top"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 220.0
-offset_top = 100.0
-offset_right = -220.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_85g3d")
-
-[node name="Piece1" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Top/TetrominoesBoard"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_trceg")
-accent_color = Color(0.21176471, 0.4117647, 0.9843137, 1)
-shape_base = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)])
-shape_accent = Array[Vector2i]([Vector2i(1, 1)])
-
-[node name="Piece2" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Top/TetrominoesBoard"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_trceg")
-shape_base = Array[Vector2i]([Vector2i(1, 1)])
-shape_accent = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 1)])
-
-[node name="Piece3" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Top/TetrominoesBoard"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_trceg")
-shape_base = Array[Vector2i]([Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)])
-shape_accent = Array[Vector2i]([Vector2i(0, 0)])
-
-[node name="Piece4" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Top/TetrominoesBoard"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_trceg")
-shape_base = Array[Vector2i]([Vector2i(1, 0), Vector2i(0, 1), Vector2i(2, 0)])
-shape_accent = Array[Vector2i]([Vector2i(1, 0), Vector2i(1, 1)])
-
-[node name="Piece5" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Top/TetrominoesBoard"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_trceg")
-shape_base = Array[Vector2i]([Vector2i(2, 1)])
-shape_accent = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
-
-[node name="Middle" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 100
-
-[node name="TetrominoesButtons" type="GridContainer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-columns = 2
-
-[node name="Piece1" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer/TetrominoesButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Piece2" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer/TetrominoesButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Piece3" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer/TetrominoesButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Piece4" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer/TetrominoesButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Piece5" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer/TetrominoesButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="TileMapLayer" type="TileMapLayer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer"]
-position = Vector2(264, 287)
-scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAD8/wQAAAAAAAAAAAD8/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAACAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_trceg")
-
-[node name="MarginContainer2" type="MarginContainer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 100
-
-[node name="TetrominoesControls" type="GridContainer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 3
-
-[node name="Button" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="UpButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "▲"
-
-[node name="Button3" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="LeftButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "◀"
-
-[node name="Button7" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="RightButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "►"
-
-[node name="ConfirmButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "+"
-
-[node name="DownButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "▼"
-
-[node name="DeleteButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Middle/HBoxContainer/MarginContainer2/TetrominoesControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "×"
-
-[node name="Bottom" type="Control" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer2" type="MarginContainer" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Bottom"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 330
-theme_override_constants/margin_top = 200
-theme_override_constants/margin_right = 330
-theme_override_constants/margin_bottom = 200
-
-[node name="BackButton" type="Button" parent="UI/ScreenFrame/Tetrominoes/VBoxContainer/Bottom/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 60
-text = "Back"
 
 [node name="Safe" parent="UI" instance=ExtResource("4_a8y0u")]
 unique_name_in_owner = true
@@ -291,13 +41,18 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Tetrominoes" parent="UI" instance=ExtResource("6_tipki")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [node name="LevelSelector" parent="UI" instance=ExtResource("13_a8y0u")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [node name="IntroScreen" parent="UI" instance=ExtResource("4_trceg")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 48.0
 offset_top = 48.0
@@ -325,11 +80,11 @@ On your mission, you will join other experienced agents.
 Further details are classified and will be transmitted through encrypted channels."
 button_text = "Next"
 
-[connection signal="pressed" from="UI/ScreenFrame/Tetrominoes/VBoxContainer/Bottom/MarginContainer2/BackButton" to="." method="_on_level_back_button_pressed"]
 [connection signal="back_button_pressed" from="UI/Safe" to="." method="_on_level_back_button_pressed"]
 [connection signal="unlocked" from="UI/Safe" to="." method="_on_safe_unlocked"]
 [connection signal="back_button_pressed" from="UI/TicTacToe" to="." method="_on_level_back_button_pressed"]
 [connection signal="back_button_pressed" from="UI/Maze" to="." method="_on_level_back_button_pressed"]
+[connection signal="back_button_pressed" from="UI/Tetrominoes" to="." method="_on_level_back_button_pressed"]
 [connection signal="maze_level_button_pressed" from="UI/LevelSelector" to="." method="_on_maze_level_button_pressed"]
 [connection signal="safe_level_button_pressed" from="UI/LevelSelector" to="." method="_on_safe_level_button_pressed"]
 [connection signal="tetrominoes_level_button_pressed" from="UI/LevelSelector" to="." method="_on_tetrominoes_level_button_pressed"]
