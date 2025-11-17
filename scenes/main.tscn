@@ -53,11 +53,12 @@ layout_mode = 1
 
 [node name="IntroScreen" parent="." instance=ExtResource("4_trceg")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 48.0
-offset_top = 48.0
-offset_right = 1032.0
-offset_bottom = 1872.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 message_text = "Operative, your name surfaced in our final screening.
 
 Before we can deploy you into the field, command requires confirmation of your tactical reasoning and pattern recognition skills.
@@ -70,7 +71,12 @@ button_text = "Start"
 [node name="WinScreen" parent="." instance=ExtResource("4_trceg")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 message_text = "Operative, your performance exceeded expectations.
 
 Effective immediately, you are cleared for the assignment.
