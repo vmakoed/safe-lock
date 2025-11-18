@@ -9,6 +9,8 @@ const PUZZLES = {
 
 @export var intro_level_title: String
 @export_multiline var intro_level_text: String
+@export var win_level_title: String
+@export_multiline var win_level_text: String
 
 @onready var display_panel: Panel = %DisplayPanel
 @onready var title_label: Label = %TitleLabel
@@ -18,15 +20,15 @@ var current_level: BaseLevel
 var button_mapping: Dictionary = {}
 
 func _ready() -> void:
-	var level = _prepare_intro_level()
+	var level = _prepare_message_screen(intro_level_title, intro_level_text)
+	level.confirm_pressed.connect(_on_intro_confirmed)
 	_switch_level(level)
 
-func _prepare_intro_level() -> BaseLevel:
+func _prepare_message_screen(title: String, text: String) -> BaseLevel:
 	var scene = load("res://scenes/message_screen.tscn")
 	var level = scene.instantiate() as MessageScreen
-	level.level_title = intro_level_title
-	level.message_text = intro_level_text
-	level.confirm_pressed.connect(_on_intro_confirmed)
+	level.level_title = title
+	level.message_text = text
 
 	return level
 
@@ -41,6 +43,9 @@ func _unload_current_level() -> void:
 func _load_level(level: BaseLevel) -> void:
 	current_level = level
 	display_panel.add_child(current_level)
+
+	if level.has_signal("game_won"):
+		level.game_won.connect(_on_game_won)
 
 	title_label.text = current_level.level_title
 	controls_label.text = current_level.controls_hint
@@ -70,4 +75,8 @@ func _on_intro_confirmed() -> void:
 func _on_puzzle_selection_confirmed(level_name: String) -> void:
 	var level = _instantiatie_level(PUZZLES[level_name])
 	level.back_button_pressed.connect(_load_puzzle_selector) # TODO: find a way to ensure all puzzles have this signal
+	_switch_level(level)
+
+func _on_game_won() -> void:
+	var level = _prepare_message_screen(win_level_title, win_level_text)
 	_switch_level(level)

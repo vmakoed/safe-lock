@@ -20,6 +20,13 @@ Before we can deploy you into the field, command requires confirmation of your t
 Unlock the secure vault and access your true objective.
 
 Remember — observation and patience are your greatest assets."
+win_level_title = "CONGRATULATIONS!"
+win_level_text = "Operative, your performance exceeded expectations.
+
+Effective immediately, you are cleared for the assignment.
+On your mission, you will join other experienced agents.
+
+Further details are classified and will be transmitted through encrypted channels."
 
 [node name="Frame" parent="." instance=ExtResource("1_uwrxv")]
 layout_mode = 1
@@ -80,7 +87,7 @@ theme_override_constants/margin_right = 24
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 36
 text = "B: BACK"
 
 [node name="ButtonsSpacer" type="Control" parent="Frame/GameContainer"]
