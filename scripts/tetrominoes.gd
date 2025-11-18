@@ -1,6 +1,4 @@
-extends Control
-
-signal back_button_pressed
+extends BaseLevel
 
 @onready var board := %Board
 @onready var controls := %Controls
@@ -85,6 +83,3 @@ func _fade_in_board() -> void:
 	for i in range(board.get_child_count()):
 		var piece = board.get_child(i)
 		piece.modulate = Color(1, 1, 1, 1)
-
-func _on_back_button_pressed() -> void:
-	back_button_pressed.emit()

@@ -1,18 +1,34 @@
-extends Control
+class_name LevelSelector
+extends BaseLevel
 
-signal safe_level_button_pressed
-signal tic_tac_toe_level_button_pressed
-signal maze_level_button_pressed
-signal tetrominoes_level_button_pressed
+signal level_selection_confirmed
 
-func _on_safe_level_button_pressed() -> void:
-	safe_level_button_pressed.emit()
+@export var level_names: PackedStringArray
 
-func _on_tic_tac_toe_level_button_pressed() -> void:
-	tic_tac_toe_level_button_pressed.emit()
+@onready var levels_list: ItemList = %LevelsList
 
-func _on_maze_level_button_pressed() -> void:
-	maze_level_button_pressed.emit()
+func _ready() -> void:
+	level_title = "SELECT LEVEL"
+	controls_hint = "▲▼: SELECT / A: CONFIRM"
+	
+	for i in level_names.size():
+		levels_list.add_item(level_names[i])
 
-func _on_tetrominoes_button_pressed() -> void:
-	tetrominoes_level_button_pressed.emit()
+	if levels_list.get_item_count() > 0:
+		levels_list.select(0)
+
+func handle_input(action: String) -> void:
+	match action:
+		"up": _move_selection(-1)
+		"down": _move_selection(1)
+		"a": _on_level_selection_confirmed()
+
+func _move_selection(direction: int) -> void:
+	levels_list.select(levels_list.get_selected_items()[0] + direction)
+
+func _on_level_selection_confirmed() -> void:
+	level_selection_confirmed.emit(
+		level_names[
+			levels_list.get_selected_items()[0]
+		]
+	)

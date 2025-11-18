@@ -1,6 +1,4 @@
-extends Control
-
-signal back_button_pressed
+extends BaseLevel
 
 const WIN_CELL_INDEX = 8
 
@@ -32,7 +30,3 @@ func _disable_buttons() -> void:
 	for i in grid.get_child_count():
 		var button: Button = grid.get_child(i)
 		button.disabled = true
-
-
-func _on_back_button_pressed() -> void:
-	back_button_pressed.emit()

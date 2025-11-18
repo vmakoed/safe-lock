@@ -12,10 +12,6 @@ extends Control
 
 var current_level: Control = null
 
-func _ready() -> void:
-	if win_link.is_empty():
-		win_screen.button_visible = false
-
 func _on_level_back_button_pressed() -> void:
 	current_level.visible = false
 	level_selector.visible = true

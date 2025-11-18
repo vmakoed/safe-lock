@@ -1,8 +1,6 @@
-extends Control
+extends BaseLevel
 
 const GRID_SIZE = 64
-
-signal back_button_pressed
 
 @onready var player := %Player
 @onready var solution := %SolutionTileMap
@@ -31,6 +29,3 @@ func _on_exit_body_entered(body: Node2D) -> void:
 	if body == player:
 		solution.visible = true
 		player.visible = false
-
-func _on_back_button_pressed() -> void:
-	back_button_pressed.emit()

@@ -10,13 +10,10 @@ signal confirm_pressed
 func _ready() -> void:
 	label.text = message_text
 	controls_hint = "A: CONFIRM"
-	button_mapping = {
-		"a": "confirm"
-	}
 
 func handle_input(action: String) -> void:
 	match action:
-		"confirm": _on_confirm_pressed()
+		"a": _on_confirm_pressed()
 
-func _on_confirm_pressed ()-> void:
+func _on_confirm_pressed()-> void:
 	confirm_pressed.emit()

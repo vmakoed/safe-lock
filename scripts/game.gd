@@ -1,5 +1,12 @@
 extends Control
 
+const PUZZLES = {
+	"Safe": "res://scenes/safe.tscn",
+	"TicTacToe": "res://scenes/tic_tac_toe.tscn",
+	"Maze": "res://scenes/maze.tscn",
+	"Tetrominoes": "res://scenes/tetrominoes.tscn"
+}
+
 @export var intro_level_title: String
 @export_multiline var intro_level_text: String
 
@@ -11,15 +18,8 @@ var current_level: BaseLevel
 var button_mapping: Dictionary = {}
 
 func _ready() -> void:
-	_unload_current_level()
 	var level = _prepare_intro_level()
-	_load_level(level)
-
-func _switch_level(path: String) -> void:
-	_unload_current_level()
-	var scene := load(path) as PackedScene
-	var level = scene.instantiate() as BaseLevel
-	_load_level(level)
+	_switch_level(level)
 
 func _prepare_intro_level() -> BaseLevel:
 	var scene = load("res://scenes/message_screen.tscn")
@@ -30,9 +30,9 @@ func _prepare_intro_level() -> BaseLevel:
 
 	return level
 
-func _on_intro_confirmed() -> void:
-	print("intro confirmed")
-	# _switch_level.bind("res://scenes/level_selector.tscn")
+func _switch_level(level: BaseLevel) -> void:
+	_unload_current_level()
+	_load_level(level)
 
 func _unload_current_level() -> void:
 	if current_level:
@@ -44,14 +44,30 @@ func _load_level(level: BaseLevel) -> void:
 
 	title_label.text = current_level.level_title
 	controls_label.text = current_level.controls_hint
-	button_mapping = current_level.button_mapping
+
+func _instantiatie_level(path: String) -> BaseLevel:
+	var scene := load(path) as PackedScene
+	return scene.instantiate() as BaseLevel
+
+func _load_puzzle_selector() -> void:
+	var scene = load("res://scenes/level_selector.tscn")
+	var level = scene.instantiate() as LevelSelector
+	level.level_names = PackedStringArray(PUZZLES.keys())	
+	level.level_selection_confirmed.connect(_on_puzzle_selection_confirmed)
+	_switch_level(level)
 
 func _send_action(action: String) -> void:
 	if current_level == null: return
 	
 	current_level.handle_input(action)
 
-func _on_button_pressed(action: String)	-> void:
-	if button_mapping.get(action) == null: return
+func _on_button_pressed(action: String)	-> void:	
+	_send_action(action)
 	
-	_send_action(button_mapping.get(action))
+func _on_intro_confirmed() -> void:
+	_load_puzzle_selector()
+
+func _on_puzzle_selection_confirmed(level_name: String) -> void:
+	var level = _instantiatie_level(PUZZLES[level_name])
+	level.back_button_pressed.connect(_load_puzzle_selector) # TODO: find a way to ensure all puzzles have this signal
+	_switch_level(level)

@@ -1,7 +1,6 @@
-extends Control
+extends BaseLevel
 
 signal unlocked
-signal back_button_pressed
 
 const BUTTONS_AMOUNT = 4
 const INITIAL_DIGITS = [0, 0, 0, 0]
@@ -45,6 +44,3 @@ func _on_input_button_pressed() -> void:
 		unlocked.emit()
 	else:
 		message.text = "Try again"
-
-func _on_back_button_pressed() -> void:
-	back_button_pressed.emit()

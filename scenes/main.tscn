@@ -57,6 +57,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 message_text = "Operative, your name surfaced in our final screening.
@@ -66,7 +68,6 @@ Before we can deploy you into the field, command requires confirmation of your t
 Unlock the secure vault and access your true objective.
 
 Remember — observation and patience are your greatest assets."
-button_text = "Start"
 
 [node name="WinScreen" parent="." instance=ExtResource("4_trceg")]
 unique_name_in_owner = true
@@ -75,6 +76,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 message_text = "Operative, your performance exceeded expectations.
@@ -84,7 +87,6 @@ Effective immediately, you are cleared for the assignment.
 On your mission, you will join other experienced agents.
 
 Further details are classified and will be transmitted through encrypted channels."
-button_text = "Next"
 
 [connection signal="back_button_pressed" from="Safe" to="." method="_on_level_back_button_pressed"]
 [connection signal="unlocked" from="Safe" to="." method="_on_safe_unlocked"]
@@ -95,5 +97,3 @@ button_text = "Next"
 [connection signal="safe_level_button_pressed" from="LevelSelector" to="." method="_on_safe_level_button_pressed"]
 [connection signal="tetrominoes_level_button_pressed" from="LevelSelector" to="." method="_on_tetrominoes_level_button_pressed"]
 [connection signal="tic_tac_toe_level_button_pressed" from="LevelSelector" to="." method="_on_tic_tac_toe_level_button_pressed"]
-[connection signal="button_pressed" from="IntroScreen" to="." method="_on_start_button_pressed"]
-[connection signal="button_pressed" from="WinScreen" to="." method="_on_win_button_pressed"]

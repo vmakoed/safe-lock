@@ -1,28 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdsf6t36ljorm"]
+[gd_scene load_steps=2 format=3 uid="uid://bdsf6t36ljorm"]
 
-[ext_resource type="Theme" uid="uid://c2hm7c7xw5d2v" path="res://resources/theme.tres" id="1_gcnum"]
 [ext_resource type="Script" uid="uid://bfgwyofsfe2i8" path="res://scripts/message_screen.gd" id="2_4dypb"]
 
 [node name="MessageScreen" type="Control"]
-custom_minimum_size = Vector2(1032, 1032)
 layout_mode = 3
 anchors_preset = 0
-theme = ExtResource("1_gcnum")
+offset_right = 1032.0
+offset_bottom = 1032.0
 script = ExtResource("2_4dypb")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="Label" type="Label" parent="ScrollContainer"]
+[node name="Label" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1032, 1032)
+custom_minimum_size = Vector2(984, 984)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Label text"
