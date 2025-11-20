@@ -1,21 +1,18 @@
-class_name Digit
+class_name SelectablePanel
 extends Panel
 
-@export var value : int = 0: set = _set_value
+@export var value : String = "": set = set_value
 @export var selected := false: set = _set_selected
 
 func _ready() -> void:
 	_update_label()
 	_update_style()
 
-func increment() -> void:
-	value += 1
+func is_empty() -> bool:
+	return value.is_empty()
 
-func decrement() -> void:
-	value -= 1
-
-func _set_value(new_value: int) -> void:
-	value = wrapi(new_value, 0, 10)
+func set_value(new_value: String) -> void:
+	value = new_value
 	_update_label()
 
 func _set_selected(new_state: bool) -> void:

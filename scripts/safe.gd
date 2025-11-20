@@ -2,6 +2,8 @@ extends BaseLevel
 
 signal game_won
 
+const INITIAL_SELECTED_INDEX = 0
+
 @export var digit_values: Array[Dictionary] = [
 	{
 		"initial": 0,
@@ -24,7 +26,7 @@ signal game_won
 @onready var digits_container := %DigitsContainer
 @onready var message := %Message
 
-var selected_index := 0: set = _set_selected_index
+var selected_index := INITIAL_SELECTED_INDEX: set = _set_selected_index
 var digits : Array[Digit] = []
 
 func _ready() -> void:
