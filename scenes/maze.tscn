@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwxqygbppirvj"]
+[gd_scene load_steps=9 format=4 uid="uid://dwxqygbppirvj"]
 
 [ext_resource type="Theme" uid="uid://c2hm7c7xw5d2v" path="res://resources/theme.tres" id="1_hipra"]
-[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="2_qhcyp"]
 [ext_resource type="Script" uid="uid://ca5ouk62ie06e" path="res://scripts/maze.gd" id="5_ixd5k"]
 [ext_resource type="TileSet" uid="uid://bhpln50cg3i14" path="res://resources/brick.tres" id="6_fqwfw"]
 [ext_resource type="Texture2D" uid="uid://dbs2ivho7brej" path="res://assets/player.png" id="7_o00fa"]
@@ -29,153 +28,37 @@ offset_bottom = 1920.0
 theme = ExtResource("1_hipra")
 script = ExtResource("5_ixd5k")
 
-[node name="ScreenFrame" parent="." instance=ExtResource("2_qhcyp")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 48
+[node name="MazeWorld" type="Node2D" parent="."]
+position = Vector2(16, 32)
 
-[node name="TileMap" type="TileMapLayer" parent="ScreenFrame"]
-position = Vector2(540, 1008)
-tile_map_data = PackedByteArray("AAD6//P/AQAAAAAAAAD6//X/AQAAAAAAAAD6//b/AQAAAAAAAAD6//f/AQAAAAAAAAD6//j/AQAAAAAAAAD6//n/AQAAAAAAAAD7//T/AQAAAAAAAAD7//X/AQAAAAAAAAD7//n/AQAAAAAAAAD7//v/AQAAAAAAAAD7//z/AQAAAAAAAAD7//3/AQAAAAAAAAD8//P/AQAAAAAAAAD8//f/AQAAAAAAAAD9//P/AQAAAAAAAAD9//X/AQAAAAAAAAD9//f/AQAAAAAAAAD9//r/AQAAAAAAAAD9//v/AQAAAAAAAAD+//P/AQAAAAAAAAD///P/AQAAAAAAAAD///X/AQAAAAAAAAD///b/AQAAAAAAAAD///f/AQAAAAAAAAAAAPP/AQAAAAAAAAAAAPX/AQAAAAAAAAAAAPf/AQAAAAAAAAABAPP/AQAAAAAAAAABAPr/AQAAAAAAAAABAPv/AQAAAAAAAAABAP3/AQAAAAAAAAACAPP/AQAAAAAAAAACAPr/AQAAAAAAAAACAPv/AQAAAAAAAAACAP3/AQAAAAAAAAADAPP/AQAAAAAAAAADAP3/AQAAAAAAAAAEAPP/AQAAAAAAAAAEAPr/AQAAAAAAAAAEAPv/AQAAAAAAAAAFAPb/AQAAAAAAAAAFAPf/AQAAAAAAAAAFAPj/AQAAAAAAAAAFAPr/AQAAAAAAAAD6//7/AQAAAAAAAAD7//7/AQAAAAAAAAD8//j/AQAAAAAAAAD8//7/AQAAAAAAAAD9//j/AQAAAAAAAAD9//z/AQAAAAAAAAD9//7/AQAAAAAAAAD+//r/AQAAAAAAAAD+//z/AQAAAAAAAAD+//7/AQAAAAAAAAD///j/AQAAAAAAAAD///r/AQAAAAAAAAD///z/AQAAAAAAAAD///7/AQAAAAAAAAAAAPj/AQAAAAAAAAAAAPr/AQAAAAAAAAAAAP7/AQAAAAAAAAABAPj/AQAAAAAAAAABAP7/AQAAAAAAAAACAPT/AQAAAAAAAAACAPb/AQAAAAAAAAACAPj/AQAAAAAAAAACAP7/AQAAAAAAAAADAPb/AQAAAAAAAAADAPj/AQAAAAAAAAADAP7/AQAAAAAAAAAEAPT/AQAAAAAAAAAEAPb/AQAAAAAAAAAEAP7/AQAAAAAAAAD4//P/AQAAAAAAAAD4//T/AQAAAAAAAAD4//X/AQAAAAAAAAD4//f/AQAAAAAAAAD4//j/AQAAAAAAAAD4//n/AQAAAAAAAAD4//r/AQAAAAAAAAD4//v/AQAAAAAAAAD4//z/AQAAAAAAAAD4//3/AQAAAAAAAAD4//7/AQAAAAAAAAD5//P/AQAAAAAAAAD5//v/AQAAAAAAAAD5//z/AQAAAAAAAAD5//7/AQAAAAAAAAAGAPb/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAP7/AQAAAAAAAAAHAPb/AQAAAAAAAAAHAPf/AQAAAAAAAAAHAPj/AQAAAAAAAAAHAPn/AQAAAAAAAAAHAPr/AQAAAAAAAAAHAPv/AQAAAAAAAAAHAPz/AQAAAAAAAAAHAP3/AQAAAAAAAAAHAP7/AQAAAAAAAAAGAPT/AQAAAAAAAAAHAPP/AQAAAAAAAAAHAPT/AQAAAAAAAAD4//H/AQAAAAAAAAD4//L/AQAAAAAAAAD5//H/AQAAAAAAAAD6//H/AQAAAAAAAAD7//H/AQAAAAAAAAD8//H/AQAAAAAAAAD9//H/AQAAAAAAAAD+//H/AQAAAAAAAAD///H/AQAAAAAAAAAAAPH/AQAAAAAAAAABAPH/AQAAAAAAAAACAPH/AQAAAAAAAAADAPH/AQAAAAAAAAAEAPH/AQAAAAAAAAAFAPH/AQAAAAAAAAAGAPH/AQAAAAAAAAAGAPL/AQAAAAAAAAAHAPH/AQAAAAAAAAAHAPL/AQAAAAAAAAD+//T/AQAAAAAAAAACAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAAGAPn/AQAAAAAAAAD5//r/AQAAAAAAAAA=")
+[node name="TileMap" type="TileMapLayer" parent="MazeWorld"]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAALAA0AAQAAAAAAAAADAA0AAQAAAAAAAAAJAA0AAQAAAAAAAAAKAA0AAQAAAAAAAAABAAoAAQAAAAAAAAABAAsAAQAAAAAAAAADAAQAAQAAAAAAAAAFAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAKAAoAAQAAAAAAAAAKAAwAAQAAAAAAAAAPAAEAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAgAAQAAAAAAAAAPAAsAAQAAAAAAAAAPAA0AAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAA0AAQAAAAAAAAACAAUAAQAAAAAAAAACAAYAAQAAAAAAAAACAAcAAQAAAAAAAAACAAgAAQAAAAAAAAADAAsAAQAAAAAAAAADAAwAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAoAAQAAAAAAAAAFAAsAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAUAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAsAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAoAAQAAAAAAAAAMAAsAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAIAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAcAAQAAAAAAAAAPAAkAAQAAAAAAAAAPAAoAAQAAAAAAAAAPAAwAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAAAAQAAAAAAAAABAAIAAQAAAAAAAAABAAkAAQAAAAAAAAABAA0AAQAAAAAAAAACAAAAAQAAAAAAAAACAAIAAQAAAAAAAAACAAQAAQAAAAAAAAACAA0AAQAAAAAAAAADAAAAAQAAAAAAAAADAAMAAQAAAAAAAAADAAgAAQAAAAAAAAADAAoAAQAAAAAAAAAEAAAAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAA0AAQAAAAAAAAAFAAAAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAkAAQAAAAAAAAAFAA0AAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAkAAQAAAAAAAAAGAAsAAQAAAAAAAAAGAA0AAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAkAAQAAAAAAAAAHAAsAAQAAAAAAAAAHAA0AAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAYAAQAAAAAAAAAIAAkAAQAAAAAAAAAIAA0AAQAAAAAAAAAJAAAAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAkAAQAAAAAAAAAJAAwAAQAAAAAAAAAKAAAAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAUAAQAAAAAAAAAKAAcAAQAAAAAAAAAKAAkAAQAAAAAAAAALAAAAAQAAAAAAAAALAAIAAQAAAAAAAAALAAUAAQAAAAAAAAALAAcAAQAAAAAAAAALAAwAAQAAAAAAAAAMAAAAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAkAAQAAAAAAAAAMAA0AAQAAAAAAAAANAAAAAQAAAAAAAAANAAUAAQAAAAAAAAANAAkAAQAAAAAAAAAOAAAAAQAAAAAAAAAOAAMAAQAAAAAAAAAOAAUAAQAAAAAAAAAOAAgAAQAAAAAAAAAOAAsAAQAAAAAAAAAOAA0AAQAAAAAAAAAPAAAAAQAAAAAAAAAPAAUAAQAAAAAAAAA=")
 tile_set = ExtResource("6_fqwfw")
 
-[node name="SolutionTileMap" type="TileMapLayer" parent="ScreenFrame"]
+[node name="SolutionTileMap" type="TileMapLayer" parent="MazeWorld"]
 unique_name_in_owner = true
 visible = false
-position = Vector2(540, 1008)
-tile_map_data = PackedByteArray("AAD+//v/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAPz/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD+//3/AQAAAAAAAAD9//3/AQAAAAAAAAD8//3/AQAAAAAAAAD8//z/AQAAAAAAAAD8//v/AQAAAAAAAAD8//r/AQAAAAAAAAD8//n/AQAAAAAAAAD9//n/AQAAAAAAAAD+//n/AQAAAAAAAAD///n/AQAAAAAAAAAAAPn/AQAAAAAAAAABAPn/AQAAAAAAAAACAPn/AQAAAAAAAAADAPn/AQAAAAAAAAAEAPn/AQAAAAAAAAAEAPf/AQAAAAAAAAAEAPj/AQAAAAAAAAADAPf/AQAAAAAAAAACAPf/AQAAAAAAAAABAPf/AQAAAAAAAAABAPb/AQAAAAAAAAABAPX/AQAAAAAAAAACAPX/AQAAAAAAAAADAPX/AQAAAAAAAAAEAPX/AQAAAAAAAAAFAPX/AQAAAAAAAAAGAPX/AQAAAAAAAAAHAPX/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAsAAQAAAAAAAAAHAAoAAQAAAAAAAAAJAAUAAQAAAAAAAAALAAYAAQAAAAAAAAAEAAgAAQAAAAAAAAAEAAkAAQAAAAAAAAAEAAoAAQAAAAAAAAAEAAwAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAwAAQAAAAAAAAAGAAgAAQAAAAAAAAAGAAoAAQAAAAAAAAAGAAwAAQAAAAAAAAAHAAgAAQAAAAAAAAAHAAwAAQAAAAAAAAAIAAgAAQAAAAAAAAAIAAoAAQAAAAAAAAAIAAsAAQAAAAAAAAAIAAwAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAgAAQAAAAAAAAAKAAQAAQAAAAAAAAAKAAYAAQAAAAAAAAAKAAgAAQAAAAAAAAALAAQAAQAAAAAAAAALAAgAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAAMAAgAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_o6xl0")
 
-[node name="Exit" type="Area2D" parent="ScreenFrame"]
-position = Vector2(128, 48)
+[node name="Exit" type="Area2D" parent="MazeWorld"]
+position = Vector2(992, 288)
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenFrame/Exit"]
-position = Vector2(888, 288)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWorld/Exit"]
 shape = SubResource("RectangleShape2D_tefeu")
 
-[node name="Player" type="CharacterBody2D" parent="ScreenFrame"]
+[node name="Player" type="CharacterBody2D" parent="MazeWorld"]
 unique_name_in_owner = true
-position = Vector2(444, 720)
+position = Vector2(416, 672)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenFrame/Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWorld/Player"]
 position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_jyhfs")
 
-[node name="Sprite2D" type="Sprite2D" parent="ScreenFrame/Player"]
+[node name="Sprite2D" type="Sprite2D" parent="MazeWorld/Player"]
 texture = ExtResource("7_o00fa")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenFrame"]
-layout_mode = 2
-
-[node name="Top" type="Control" parent="ScreenFrame/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Bottom" type="Control" parent="ScreenFrame/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenFrame/VBoxContainer/Bottom"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
-
-[node name="Controls" type="GridContainer" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 3
-
-[node name="Button" type="Control" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="UpButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "▲"
-
-[node name="Button3" type="Control" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="LeftButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "◀"
-
-[node name="Button5" type="Control" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="RightButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "►"
-
-[node name="Button7" type="Control" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="DownButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 80
-text = "▼"
-
-[node name="Button9" type="Control" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 330
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 330
-theme_override_constants/margin_bottom = 100
-
-[node name="BackButton" type="Button" parent="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 60
-text = "Back"
-
-[connection signal="body_entered" from="ScreenFrame/Exit" to="." method="_on_exit_body_entered"]
-[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls/UpButton" to="." method="_on_up_button_pressed"]
-[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls/LeftButton" to="." method="_on_left_button_pressed"]
-[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls/RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer/Controls/DownButton" to="." method="_on_down_button_pressed"]
-[connection signal="pressed" from="ScreenFrame/VBoxContainer/Bottom/VBoxContainer/MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="body_entered" from="MazeWorld/Exit" to="." method="_on_exit_body_entered"]
