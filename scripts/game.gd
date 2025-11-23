@@ -44,10 +44,14 @@ func _load_level(level: BaseLevel) -> void:
 	current_level = level
 	display_panel.add_child(current_level)
 
-	if level.has_signal("game_won"):
-		level.game_won.connect(_on_game_won)
+	if current_level.has_signal("game_won"):
+		current_level.game_won.connect(_on_game_won)
 
 	title_label.text = current_level.level_title
+	current_level.controls_hint_updated.connect(_update_controls_hint)
+	_update_controls_hint()
+
+func _update_controls_hint() -> void:
 	controls_label.text = current_level.controls_hint
 
 func _instantiatie_level(path: String) -> BaseLevel:
