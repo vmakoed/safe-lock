@@ -1,0 +1,239 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci0esgy65pu71"]
+
+[ext_resource type="Script" uid="uid://cr7yp5xyf3a1s" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://csu2bta3jc3jw" path="res://scenes/display_panel.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lnu2h")
+intro_level_title = "START"
+intro_level_text = "Operative, your name surfaced in our final screening.
+
+Before we can deploy you into the field, command requires confirmation of your tactical reasoning and pattern recognition skills.
+
+Unlock the secure vault and access your true objective.
+
+Remember — observation and patience are your greatest assets."
+win_level_title = "CONGRATULATIONS!"
+win_level_text = "Operative, your performance exceeded expectations.
+
+Effective immediately, you are cleared for the assignment.
+On your mission, you will join other experienced agents.
+
+Further details are classified and will be transmitted through encrypted channels."
+
+[node name="Frame" parent="." instance=ExtResource("1_uwrxv")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameContainer" type="VBoxContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="Frame/GameContainer"]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Frame/GameContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "LEVEL TITLE"
+horizontal_alignment = 1
+
+[node name="TitleSpacer" type="Control" parent="Frame/GameContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="DisplayPanel" parent="Frame/GameContainer" instance=ExtResource("2_yqjtg")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InfoSpacer" type="Control" parent="Frame/GameContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="InfoPanel" type="Panel" parent="Frame/GameContainer"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Frame/GameContainer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 24
+
+[node name="ControlsLabel" type="Label" parent="Frame/GameContainer/InfoPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 36
+text = "B: BACK"
+
+[node name="ButtonsSpacer" type="Control" parent="Frame/GameContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Frame/GameContainer"]
+layout_mode = 2
+
+[node name="DPad" type="GridContainer" parent="Frame/GameContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(432, 432)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 3
+
+[node name="EmptyTopLeft" type="Control" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "▲"
+
+[node name="EmptyTopRight" type="Control" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "◀"
+
+[node name="EmptyCenter" type="Control" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RightButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "▶"
+
+[node name="EmptyBottomLeft" type="Control" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DownButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "▼"
+
+[node name="EmptyBottomRight" type="Control" parent="Frame/GameContainer/ButtonsContainer/DPad"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionButtons" type="GridContainer" parent="Frame/GameContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(432, 432)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 3
+
+[node name="EmptyTopLeft" type="Control" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="YButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "Y"
+
+[node name="EmptyTopRight" type="Control" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="XButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "X"
+
+[node name="EmptyCenter" type="Control" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "B"
+
+[node name="EmptyBottomLeft" type="Control" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AButton" type="Button" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 72
+text = "A"
+
+[node name="EmptyBottomRight" type="Control" parent="Frame/GameContainer/ButtonsContainer/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BottomSpacer" type="Control" parent="Frame/GameContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/DPad/UpButton" to="." method="_on_button_pressed" binds= ["up"]]
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/DPad/LeftButton" to="." method="_on_button_pressed" binds= ["left"]]
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/DPad/RightButton" to="." method="_on_button_pressed" binds= ["right"]]
+[connection signal="button_down" from="Frame/GameContainer/ButtonsContainer/DPad/DownButton" to="." method="_on_button_pressed" binds= ["down"]]
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/ActionButtons/YButton" to="." method="_on_button_pressed" binds= ["y"]]
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/ActionButtons/XButton" to="." method="_on_button_pressed" binds= ["x"]]
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/ActionButtons/BButton" to="." method="_on_button_pressed" binds= ["b"]]
+[connection signal="pressed" from="Frame/GameContainer/ButtonsContainer/ActionButtons/AButton" to="." method="_on_button_pressed" binds= ["a"]]

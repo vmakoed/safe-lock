@@ -1,21 +1,17 @@
-extends Control
+extends BaseLevel
 
 const GRID_SIZE = 64
 
 @onready var player := %Player
-@onready var maze_solution := %MazeSolutionTileMap
+@onready var solution := %SolutionTileMap
 
-func _on_up_button_pressed() -> void:
-	_move(Vector2.UP)
-
-func _on_left_button_pressed() -> void:
-	_move(Vector2.LEFT)
-
-func _on_right_button_pressed() -> void:
-	_move(Vector2.RIGHT)
-
-func _on_down_button_pressed() -> void:
-	_move(Vector2.DOWN)
+func handle_input(action: String) -> void:
+	match action:
+		"up": _move(Vector2.UP)
+		"left": _move(Vector2.LEFT)
+		"down": _move(Vector2.DOWN)
+		"right": _move(Vector2.RIGHT)
+		"b": _on_back_button_pressed()
 
 func _move(direction: Vector2) -> void:
 	var position_change := direction * GRID_SIZE
@@ -25,8 +21,7 @@ func _move(direction: Vector2) -> void:
 	if hit == null:
 		player.position += position_change
 
-
 func _on_exit_body_entered(body: Node2D) -> void:
 	if body == player:
-		maze_solution.visible = true
+		solution.visible = true
 		player.visible = false

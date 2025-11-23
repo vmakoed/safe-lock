@@ -1,0 +1,138 @@
+[gd_scene load_steps=8 format=4 uid="uid://b0l1a6a3q2nsb"]
+
+[ext_resource type="Script" uid="uid://dy0balcon7rqv" path="res://scripts/tetrominoes.gd" id="1_lq7ht"]
+[ext_resource type="Script" uid="uid://bu5kl0d5g68mi" path="res://scripts/tetrominoes_board.gd" id="2_lq7ht"]
+[ext_resource type="Script" uid="uid://381ypflv7hvt" path="res://scripts/piece.gd" id="3_cwjcp"]
+[ext_resource type="PackedScene" uid="uid://b3eogehps8vsw" path="res://scenes/selectable_panel.tscn" id="4_lq7ht"]
+[ext_resource type="Texture2D" uid="uid://odpxl4wgm5x8" path="res://assets/wall.png" id="4_uoy2p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uetis"]
+texture = ExtResource("4_uoy2p")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q3bpf"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_uetis")
+
+[node name="Tetrominoes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lq7ht")
+level_title = "TETROMINOES"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopSpacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="Board" type="Control" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(640, 512)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("2_lq7ht")
+
+[node name="Piece1" type="Control" parent="VBoxContainer/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+accent_color = Color(0.21176471, 0.4117647, 0.9843137, 1)
+shape_base = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)])
+shape_accent = Array[Vector2i]([Vector2i(1, 1)])
+
+[node name="Piece2" type="Control" parent="VBoxContainer/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(1, 1)])
+shape_accent = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 1)])
+
+[node name="Piece3" type="Control" parent="VBoxContainer/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)])
+shape_accent = Array[Vector2i]([Vector2i(0, 0)])
+
+[node name="Piece4" type="Control" parent="VBoxContainer/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(1, 0), Vector2i(0, 1), Vector2i(2, 0)])
+shape_accent = Array[Vector2i]([Vector2i(1, 0), Vector2i(1, 1)])
+
+[node name="Piece5" type="Control" parent="VBoxContainer/Board"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cwjcp")
+shape_base = Array[Vector2i]([Vector2i(2, 1)])
+shape_accent = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
+
+[node name="BoardSpacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 48
+
+[node name="Panels" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 144)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+
+[node name="Piece1" parent="VBoxContainer/MarginContainer/Panels" instance=ExtResource("4_lq7ht")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Piece2" parent="VBoxContainer/MarginContainer/Panels" instance=ExtResource("4_lq7ht")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Piece3" parent="VBoxContainer/MarginContainer/Panels" instance=ExtResource("4_lq7ht")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Piece4" parent="VBoxContainer/MarginContainer/Panels" instance=ExtResource("4_lq7ht")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Piece5" parent="VBoxContainer/MarginContainer/Panels" instance=ExtResource("4_lq7ht")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VBoxContainer"]
+position = Vector2(504, 960)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAFAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAHAPv/AAAAAAAAAAAMAPv/AAAAAAAAAAALAPz/AAAAAAAAAAAMAPz/AAAAAAAAAAANAPz/AAAAAAAAAADz//v/AAAAAAAAAADz//z/AAAAAAAAAADz//r/AAAAAAAAAAD0//v/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAD5//v/AAAAAAAAAAD6//z/AAAAAAAAAAD6//v/AAAAAAAAAAD7//z/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_q3bpf")
+
+[node name="BottomSpacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2

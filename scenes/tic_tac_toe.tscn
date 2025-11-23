@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttjvxr6exn3h"]
+
+[ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="2_8h2lu"]
+[ext_resource type="PackedScene" uid="uid://b3eogehps8vsw" path="res://scenes/selectable_panel.tscn" id="2_etyx0"]
+
+[node name="TicTacToe" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8h2lu")
+level_title = "TIC-TAC-TOE"
+controls_hint = "◀▶▲▼: SELECT / A: CONFIRM / B: BACK"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -153.0
+offset_right = 126.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 3
+
+[node name="SelectablePanel0" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+value = "O"
+
+[node name="SelectablePanel1" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+
+[node name="SelectablePanel2" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+value = "X"
+
+[node name="SelectablePanel3" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+value = "X"
+
+[node name="SelectablePanel4" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+value = "O"
+
+[node name="SelectablePanel5" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+value = "X"
+
+[node name="SelectablePanel6" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+
+[node name="SelectablePanel7" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+
+[node name="SelectablePanel8" parent="GridContainer" instance=ExtResource("2_etyx0")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 96
+
+[node name="Message" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Os TURN"
+horizontal_alignment = 1

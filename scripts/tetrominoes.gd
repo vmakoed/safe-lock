@@ -1,85 +1,122 @@
-extends Control
+extends BaseLevel
 
-@onready var tetrominoes_board := %TetrominoesBoard
-@onready var tetrominoes_controls := %TetrominoesControls
-@onready var tetrominoes_buttons := %TetrominoesButtons
+const INITIAL_SELECTED_INDEX = 0
+const CONTROLS_HINT_ACTIVE_PIECE = "◀▶▲▼: MOVE / A: CONFIRM / X: REMOVE / B: BACK"
+const CONTROLS_HINT_NEW_PIECE = "◀▶: SELECT / A: ADD / B: BACK"
+const CONTROLS_HINT_EXISTING_PIECE = "◀▶: SELECT / A: MOVE / X: REMOVE / B: BACK"
 
 @export var cell_size: Vector2i = Vector2i(128, 128)
 @export var grid_size: Vector2i = Vector2i(5, 4)
 
+@onready var board := %Board
+@onready var panels_container := %Panels
+
 var active_piece: Control = null
+var panels: Array[SelectablePanel] = []
+var selected_index := INITIAL_SELECTED_INDEX: set = _set_selected_index
 
 func _ready() -> void:
-	var up_button = tetrominoes_controls.get_node("UpButton")
-	var left_button = tetrominoes_controls.get_node("LeftButton")
-	var right_button = tetrominoes_controls.get_node("RightButton")
-	var down_button = tetrominoes_controls.get_node("DownButton")
-	var confirm_button = tetrominoes_controls.get_node("ConfirmButton")
-	var delete_button = tetrominoes_controls.get_node("DeleteButton")
+	_load_panels()
+	_update_panels()
+	_update_controls_hint()
 
-	up_button.pressed.connect(_on_up_button_pressed)
-	left_button.pressed.connect(_on_left_button_pressed)
-	right_button.pressed.connect(_on_right_button_pressed)
-	down_button.pressed.connect(_on_down_button_pressed)
-	confirm_button.pressed.connect(_on_confirm_button_pressed)
-	delete_button.pressed.connect(_on_delete_button_pressed)
+func handle_input(action: String) -> void:
+	match action:
+		"up": _on_up_pressed()
+		"left": _on_left_pressed()
+		"down": _on_down_pressed()
+		"right": _on_right_pressed()
+		"a": _on_confirm_pressed()
+		"b": _on_back_button_pressed()
+		"x": _on_remove_pressed()
 
-	for i in range(tetrominoes_buttons.get_child_count()):
-		var button = tetrominoes_buttons.get_child(i)
-		button.pressed.connect(set_active_piece.bind(i))
+func _move_selection(direction: int) -> void:
+	selected_index = wrapi(selected_index + direction, 0, panels.size())
+	_update_controls_hint()
 
+func _set_selected_index(digit_index: int) -> void:
+	selected_index = digit_index
+	_update_panels()
 
-func _on_up_button_pressed() -> void:
+func _load_panels() -> void:
+	for i in range(panels_container.get_child_count()):
+		var panel = panels_container.get_child(i)
+		panels.append(panel)
+
+func _update_panels() -> void:
+	for i in range(panels.size()):
+		var panel = panels_container.get_child(i)
+		panel.selected = i == selected_index
+
+func _on_up_pressed() -> void:
 	if active_piece == null: return
 	active_piece.position += Vector2(0, -cell_size.y)
 
-func _on_left_button_pressed() -> void:
-	if active_piece == null: return
-	active_piece.position += Vector2(-cell_size.x, 0)
+func _on_left_pressed() -> void:
+	if active_piece == null: 
+		_move_selection(-1)
+	else:
+		active_piece.position += Vector2(-cell_size.x, 0)
 
-func _on_right_button_pressed() -> void:
-	if active_piece == null: return
-	active_piece.position += Vector2(cell_size.x, 0)
+func _on_right_pressed() -> void:
+	if active_piece == null: 
+		_move_selection(1)
+	else:
+		active_piece.position += Vector2(cell_size.x, 0)
 
-func _on_down_button_pressed() -> void:
+func _on_down_pressed() -> void:
 	if active_piece == null: return
 	active_piece.position += Vector2(0, cell_size.y)
 
-func _on_confirm_button_pressed() -> void:
-	active_piece = null
-	_enable_piece_buttons()
-	_fade_in_board()
+func _on_confirm_pressed() -> void:
+	if active_piece == null:
+		_set_active_piece()
+	else:
+		active_piece = null
+		_fade_in_board()
+		
+	_update_controls_hint()
 
-func _on_delete_button_pressed() -> void:
-	if active_piece == null: return
-	active_piece.visible = false
-	active_piece.position = Vector2.ZERO
-	_on_confirm_button_pressed()
+func _on_remove_pressed() -> void:
+	if active_piece == null:
+		var piece = board.get_child(selected_index)
+		piece.position = Vector2.ZERO
+		piece.visible = false
+	else:
+		active_piece.visible = false
+		active_piece.position = Vector2.ZERO
+		_on_confirm_pressed()
 
-func set_active_piece(piece_index: int) -> void:
-	var piece = tetrominoes_board.get_child(piece_index)
+	_update_controls_hint()
+
+func _set_active_piece() -> void:
+	var piece = board.get_child(selected_index)
 	active_piece = piece
 	active_piece.visible = true
-	_disable_piece_buttons()
 	_fade_out_board()
 
-func _disable_piece_buttons() -> void:
-	for i in range(tetrominoes_buttons.get_child_count()):
-		var button = tetrominoes_buttons.get_child(i)
-		button.disabled = true
+func _unset_active_piece() -> void:
+	active_piece = null
+	_update_controls_hint()
 
-func _enable_piece_buttons() -> void:
-	for i in range(tetrominoes_buttons.get_child_count()):
-		var button = tetrominoes_buttons.get_child(i)
-		button.disabled = false
+func _update_controls_hint() -> void:
+	if active_piece != null:
+		controls_hint = CONTROLS_HINT_ACTIVE_PIECE
+		return
+
+	var piece = board.get_child(selected_index)
+	if piece.visible == false:
+		controls_hint = CONTROLS_HINT_NEW_PIECE
+	else:
+		controls_hint = CONTROLS_HINT_EXISTING_PIECE
 
 func _fade_out_board() -> void:
-	for i in range(tetrominoes_board.get_child_count()):
-		var piece = tetrominoes_board.get_child(i)
+	for i in range(board.get_child_count()):
+		var piece = board.get_child(i)
 		if piece != active_piece:
 			piece.modulate = Color(0, 0, 0, 0.5)
 
 func _fade_in_board() -> void:
-	for i in range(tetrominoes_board.get_child_count()):
-		var piece = tetrominoes_board.get_child(i)
+	for i in range(board.get_child_count()):
+		var piece = board.get_child(i)
 		piece.modulate = Color(1, 1, 1, 1)
