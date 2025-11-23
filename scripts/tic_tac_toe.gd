@@ -17,10 +17,10 @@ func _ready() -> void:
 
 func handle_input(action: String) -> void:
 	match action:
-		"up": _move_vertical(-1)
-		"left": _move_horizontal(-1)
-		"down": _move_vertical(1)
-		"right": _move_horizontal(1)
+		"up": if !puzzle_won: _move_vertical(-1)
+		"left": if !puzzle_won: _move_horizontal(-1)
+		"down": if !puzzle_won: _move_vertical(1)
+		"right": if !puzzle_won: _move_horizontal(1)
 		"a": _on_confirm_button_pressed()
 		"b": _on_back_button_pressed()
 
@@ -44,7 +44,7 @@ func _move_vertical(delta: int) -> void:
 func _move_horizontal(delta: int) -> void:
 	_move_selection(delta, 0)
 
-func _move_selection(dx: int, dy: int) -> void:
+func _move_selection(dx: int, dy: int) -> void:	
 	var cols := grid.columns
 	var rows := int(ceil(float(grid.get_child_count()) / cols))
 

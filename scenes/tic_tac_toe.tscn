@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dttjvxr6exn3h"]
+[gd_scene load_steps=3 format=3 uid="uid://btmvm3h7lnwyg"]
 
 [ext_resource type="Script" uid="uid://d2wutgbl0ln1e" path="res://scripts/tic_tac_toe.gd" id="2_8h2lu"]
-[ext_resource type="PackedScene" uid="uid://b3eogehps8vsw" path="res://scenes/selectable_panel.tscn" id="2_etyx0"]
+[ext_resource type="PackedScene" path="res://scenes/selectable_panel.tscn" id="2_etyx0"]
 
 [node name="TicTacToe" type="Control"]
 layout_mode = 3
