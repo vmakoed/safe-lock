@@ -23,10 +23,12 @@ size = Vector2(21.500002, 21.333328)
 [node name="Maze" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1080.0
+offset_right = 1032.0
 offset_bottom = 1920.0
 theme = ExtResource("1_hipra")
 script = ExtResource("5_ixd5k")
+level_title = "MAZE"
+controls_hint = "◀▶▲▼: MOVE /  B: BACK"
 
 [node name="MazeWorld" type="Node2D" parent="."]
 position = Vector2(16, 32)

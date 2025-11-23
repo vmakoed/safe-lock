@@ -30,8 +30,6 @@ var selected_index := INITIAL_SELECTED_INDEX: set = _set_selected_index
 var digits : Array[Digit] = []
 
 func _ready() -> void:
-	level_title = "SAFE"
-	controls_hint = "◀▶: SELECT / ▲▼: SWITCH / A: CONFIRM / B: BACK"
 	_load_digits()
 	_update_digits()
 

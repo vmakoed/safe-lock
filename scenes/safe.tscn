@@ -10,6 +10,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_no4i6")
+level_title = "SAFE"
+controls_hint = "◀▶: SELECT / ▲▼: SWITCH / A: CONFIRM / B: BACK"
 
 [node name="DigitsContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
