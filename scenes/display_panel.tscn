@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://csu2bta3jc3jw"]
+[gd_scene load_steps=0 format=3 uid="uid://csu2bta3jc3jw"]
 
 [node name="DisplayPanel" type="Panel"]
 custom_minimum_size = Vector2(1032, 1032)
