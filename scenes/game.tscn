@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2nu0nt1h7yl7"]
+[gd_scene load_steps=4 format=3 uid="uid://c2nu0nt1h7yl7"]
 
 [ext_resource type="Theme" uid="uid://c2hm7c7xw5d2v" path="res://resources/theme.tres" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://cr7yp5xyf3a1s" path="res://scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://xj00fxtha27s" path="res://scenes/screen_frame.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csu2bta3jc3jw" path="res://scenes/display_panel.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Control"]
@@ -30,15 +29,17 @@ On your mission, you will join other experienced agents.
 
 Further details are classified and will be transmitted through encrypted channels."
 
-[node name="Frame" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Frame" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="GameContainer" type="VBoxContainer" parent="Frame"]
 layout_mode = 2
