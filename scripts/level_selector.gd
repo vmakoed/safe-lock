@@ -14,8 +14,7 @@ func _ready() -> void:
 	for i in level_names.size():
 		levels_list.add_item(level_names[i])
 
-	if levels_list.get_item_count() > 0:
-		levels_list.select(0)
+	_select_initial_level()
 
 func handle_input(action: String) -> void:
 	match action:
@@ -23,12 +22,23 @@ func handle_input(action: String) -> void:
 		"down": _move_selection(1)
 		"a": _on_level_selection_confirmed()
 
+func _select_initial_level() -> void:
+	if levels_list.get_item_count() < 0:
+		return
+
+	var last_selected_level = GameState.get_last_selected_level()
+	if last_selected_level < 0 || last_selected_level > level_names.size() - 1:
+		levels_list.select(0)
+		return
+	
+	levels_list.select(last_selected_level)
+
 func _move_selection(direction: int) -> void:
 	levels_list.select(levels_list.get_selected_items()[0] + direction)
 
 func _on_level_selection_confirmed() -> void:
+	var selected_level = levels_list.get_selected_items()[0]
+	GameState.set_last_selected_level(selected_level)
 	level_selection_confirmed.emit(
-		level_names[
-			levels_list.get_selected_items()[0]
-		]
+		level_names[selected_level]
 	)

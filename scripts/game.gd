@@ -33,6 +33,7 @@ func _prepare_message_screen(title: String, text: String) -> BaseLevel:
 	return level
 
 func _switch_level(level: BaseLevel) -> void:
+	GameState.save_to_disk()
 	_unload_current_level()
 	_load_level(level)
 

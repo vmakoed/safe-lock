@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c2hm7c7xw5d2v" path="res://resources/theme.tres" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://cr7yp5xyf3a1s" path="res://scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://csu2bta3jc3jw" path="res://scenes/display_panel.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" path="res://scenes/display_panel.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
