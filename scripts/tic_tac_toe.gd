@@ -14,6 +14,7 @@ var puzzle_won := false
 func _ready() -> void:
 	_load_panels()
 	_update_panels()
+	_load_game_state()
 
 func handle_input(action: String) -> void:
 	match action:
@@ -37,6 +38,13 @@ func _update_panels() -> void:
 	for i in range(panels.size()):
 		var panel = grid.get_child(i)
 		panel.selected = i == selected_index
+
+func _load_game_state() -> void:
+	if GameState.get_tic_tac_toe_completed():
+		_complete_puzzle()
+
+func _update_game_state() -> void:
+	GameState.set_tic_tac_toe_completed(puzzle_won)
 
 func _move_vertical(delta: int) -> void:
 	_move_selection(0, delta)
@@ -65,9 +73,9 @@ func _on_confirm_button_pressed() -> void:
 	if puzzle_won: return
 	if selected_index == WIN_CELL_INDEX:
 		_complete_puzzle()
+		_update_game_state()
 	else:
 		message.text = "TRY AGAIN"
-
 
 func _complete_puzzle() -> void:
 	var panel: SelectablePanel = grid.get_child(WIN_CELL_INDEX)

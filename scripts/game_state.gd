@@ -21,6 +21,12 @@ func get_safe_digit_values() -> Array[int]:
 func set_safe_digit_values(digit_values: Array[int]) -> void:
 	save_game.safe_digit_values = digit_values
 
+func get_tic_tac_toe_completed() -> bool:
+	return save_game.tic_tac_toe_completed
+
+func set_tic_tac_toe_completed(completed: bool) -> void:
+	save_game.tic_tac_toe_completed = completed
+
 func _load_from_disk() -> void:
 	if ResourceLoader.exists(SAVE_PATH):
 		save_game = ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)

@@ -3,3 +3,4 @@ extends Resource
 
 @export var level_selector_last_selected_index := 0
 @export var safe_digit_values : Array[int] = [0, 0, 0, 0]
+@export var tic_tac_toe_completed := false
