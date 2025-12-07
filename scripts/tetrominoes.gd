@@ -16,6 +16,7 @@ var panels: Array[SelectablePanel] = []
 var selected_index := INITIAL_SELECTED_INDEX: set = _set_selected_index
 
 func _ready() -> void:
+	_load_game_state()
 	_load_panels()
 	_update_panels()
 	_update_controls_hint()
@@ -37,6 +38,22 @@ func _move_selection(direction: int) -> void:
 func _set_selected_index(digit_index: int) -> void:
 	selected_index = digit_index
 	_update_panels()
+
+func _load_game_state() -> void:
+	var saved_pieces := GameState.get_tetrominoes_pieces()
+	for piece_index in range(board.get_child_count()):
+		var saved_piece = saved_pieces[piece_index]
+		var piece := board.get_child(piece_index)
+		piece.visible = saved_piece["visible"]
+		piece.position = saved_piece["position"]
+
+func _save_game_state() -> void:
+	var saved_pieces = board.get_children().map(func(piece): return {
+		"visible": piece.visible,
+		"position": piece.position
+	})
+
+	GameState.set_tetrominoes_pieces(saved_pieces)
 
 func _load_panels() -> void:
 	for i in range(panels_container.get_child_count()):
@@ -72,6 +89,7 @@ func _on_confirm_pressed() -> void:
 	if active_piece == null:
 		_set_active_piece()
 	else:
+		_save_game_state()
 		active_piece = null
 		_fade_in_board()
 		
@@ -82,6 +100,7 @@ func _on_remove_pressed() -> void:
 		var piece = board.get_child(selected_index)
 		piece.position = Vector2.ZERO
 		piece.visible = false
+		_save_game_state()
 	else:
 		active_piece.visible = false
 		active_piece.position = Vector2.ZERO

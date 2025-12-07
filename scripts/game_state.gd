@@ -45,6 +45,12 @@ func get_maze_completed() -> bool:
 func set_maze_completed(completed: bool) -> void:
 	save_game.maze_completed = completed
 
+func get_tetrominoes_pieces() -> Array:
+	return save_game.tetrominoes_pieces
+
+func set_tetrominoes_pieces(pieces: Array) -> void:
+	save_game.tetrominoes_pieces = pieces
+
 func _load_from_disk() -> void:
 	if ResourceLoader.exists(SAVE_PATH):
 		save_game = ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)

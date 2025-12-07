@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dy0balcon7rqv" path="res://scripts/tetrominoes.gd" id="1_lq7ht"]
 [ext_resource type="Script" uid="uid://bu5kl0d5g68mi" path="res://scripts/tetrominoes_board.gd" id="2_lq7ht"]
 [ext_resource type="Script" uid="uid://381ypflv7hvt" path="res://scripts/piece.gd" id="3_cwjcp"]
-[ext_resource type="PackedScene" uid="uid://b3eogehps8vsw" path="res://scenes/selectable_panel.tscn" id="4_lq7ht"]
+[ext_resource type="PackedScene" path="res://scenes/selectable_panel.tscn" id="4_lq7ht"]
 [ext_resource type="Texture2D" uid="uid://odpxl4wgm5x8" path="res://assets/wall.png" id="4_uoy2p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uetis"]

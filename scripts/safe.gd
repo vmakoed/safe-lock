@@ -5,22 +5,10 @@ signal game_won
 const INITIAL_SELECTED_INDEX = 0
 
 @export var digit_values: Array[Dictionary] = [
-	{
-		"initial": 0,
-		"solution": 4,
-	},
-	{
-		"initial": 0,
-		"solution": 6
-	},
-	{
-		"initial": 0,
-		"solution": 5
-	},
-	{
-		"initial": 0,
-		"solution": 0
-	}
+	{"initial": 0, "solution": 4},
+	{"initial": 0, "solution": 6},
+	{"initial": 0, "solution": 5},
+	{"initial": 0, "solution": 0}
 ]
 
 @onready var digits_container := %DigitsContainer

@@ -8,3 +8,11 @@ extends Resource
 @export var maze_started := false
 @export var maze_player_position := Vector2.ZERO
 @export var maze_completed := false
+
+@export var tetrominoes_pieces : Array = [
+	{"visible": false, "position": Vector2.ZERO},
+	{"visible": false, "position": Vector2.ZERO},
+	{"visible": false, "position": Vector2.ZERO},
+	{"visible": false, "position": Vector2.ZERO},
+	{"visible": false, "position": Vector2.ZERO}
+]
