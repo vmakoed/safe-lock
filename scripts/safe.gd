@@ -55,6 +55,11 @@ func _update_game_state() -> void:
 	values.assign(digits.map(func(digit): return digit.value))
 	GameState.set_safe_digit_values(values)
 
+func _reset_game_state() -> void:
+	var values: Array[int] = []
+	values.assign(digit_values.map(func(digit): return digit["initial"]))
+	GameState.set_safe_digit_values(values)
+
 func _move_selection(direction: int) -> void:
 	selected_index = wrapi(selected_index + direction, 0, digits.size())
 
@@ -64,6 +69,13 @@ func _set_selected_index(digit_index: int) -> void:
 
 func _load_digits() -> void:
 	var saved_digits = GameState.get_safe_digit_values()
+
+	# if saved digits size does not match solution digits, reset to defaults
+	if saved_digits.size() != digit_values.size():
+		_reset_game_state()
+		_load_digits()
+		return
+
 	for i in range(digit_values.size()):
 		var scene = load("res://scenes/digit.tscn")
 		var digit = scene.instantiate() as Digit

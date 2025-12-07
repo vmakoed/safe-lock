@@ -19,7 +19,6 @@ func get_safe_digit_values() -> Array[int]:
 	return save_game.safe_digit_values
 
 func set_safe_digit_values(digit_values: Array[int]) -> void:
-	print(digit_values)
 	save_game.safe_digit_values = digit_values
 
 func _load_from_disk() -> void:
