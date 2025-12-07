@@ -36,9 +36,10 @@ func _select_initial_level() -> void:
 func _move_selection(direction: int) -> void:
 	levels_list.select(levels_list.get_selected_items()[0] + direction)
 
+func _update_game_state(selected_level: int) -> void:
+	GameState.set_last_selected_level(selected_level)
+
 func _on_level_selection_confirmed() -> void:
 	var selected_level = levels_list.get_selected_items()[0]
-	GameState.set_last_selected_level(selected_level)
-	level_selection_confirmed.emit(
-		level_names[selected_level]
-	)
+	_update_game_state(selected_level)
+	level_selection_confirmed.emit(level_names[selected_level])

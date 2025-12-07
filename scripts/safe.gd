@@ -44,9 +44,16 @@ func handle_input(action: String) -> void:
 
 func _increment_digit() -> void:
 	digits[selected_index].increment()
+	_update_game_state()
 
 func _decrement_digit() -> void:
 	digits[selected_index].decrement()
+	_update_game_state()
+
+func _update_game_state() -> void:
+	var values: Array[int] = []
+	values.assign(digits.map(func(digit): return digit.value))
+	GameState.set_safe_digit_values(values)
 
 func _move_selection(direction: int) -> void:
 	selected_index = wrapi(selected_index + direction, 0, digits.size())
@@ -56,12 +63,13 @@ func _set_selected_index(digit_index: int) -> void:
 	_update_digits()
 
 func _load_digits() -> void:
+	var saved_digits = GameState.get_safe_digit_values()
 	for i in range(digit_values.size()):
 		var scene = load("res://scenes/digit.tscn")
 		var digit = scene.instantiate() as Digit
 		digits.append(digit)
 		digits_container.add_child(digit)
-		digit.value = digit_values[i]["initial"]
+		digit.value = saved_digits[i]
 
 func _update_digits() -> void:
 	for i in range(digits.size()):
